@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0.0.2
+      author: kmyczkowska
+      comment: "Initial patients data"
+      changes:
+        - loadData:
+            tableName: PATIENT_PROFILE
+            usePreparedStatements: false
+            separator: ;
+            relativeToChangelogFile: true
+            file: data/initial-patients.csv
+            encoding: UTF-8
+            quotchar:  ''''
+            columns:
+              - column:
+                  header: NAME
+                  name:   NAME
+                  type:   STRING
+              - column:
+                  header: AGE
+                  name:   AGE
+                  type:   NUMERIC
+              - column:
+                  header: CREATED
+                  name:   CREATED
+                  type:   TIMESTAMP
+              - column:
+                  header: LAST_VISIT_DATE
+                  name:   LAST_VISIT_DATE
+                  type:   TIMESTAMP

@@ -1,0 +1,64 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0.0.1
+      author: kmyczkowska
+      comment: "Initial schema creation"
+      changes:
+        - createSequence:
+            sequenceName: HIBERNATE_SEQUENCE
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ID
+                  type: BIGINT(19)
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AGE
+                  type: SMALLINT(5)
+              - column:
+                  name: CREATED
+                  type: TIMESTAMP
+              - column:
+                  name: LAST_VISIT_DATE
+                  type: TIMESTAMP
+              - column:
+                  name: NAME
+                  type: VARCHAR(255)
+            tableName: PATIENT_PROFILE
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: UUID
+                  type: VARBINARY(2147483647)
+              - column:
+                  name: ID
+                  type: BIGINT(19)
+              - column:
+                  name: NAME
+                  type: VARCHAR(255)
+              - column:
+                  name: REGISTRATION_DATE
+                  type: TIMESTAMP
+            tableName: STAFF_MEMBER
+        - addPrimaryKey:
+            columnNames: UUID
+            constraintName: CONSTRAINT_7
+            tableName: STAFF_MEMBER
+        - addPrimaryKey:
+            columnNames: ID
+            constraintName: CONSTRAINT_B
+            tableName: PATIENT_PROFILE
+        - addUniqueConstraint:
+            columnNames: ID
+            constraintName: UK_BOYCFNEBKWFVPX0EDMHQMQPE7
+            tableName: STAFF_MEMBER
+        - addUniqueConstraint:
+            columnNames: NAME
+            constraintName: UK_Q0E4GALKU1XF7A4JKRNTLFOHK
+            tableName: STAFF_MEMBER
